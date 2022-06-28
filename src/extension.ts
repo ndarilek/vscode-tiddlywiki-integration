@@ -19,14 +19,15 @@ class Provider implements vscode.WebviewViewProvider {
         this.view.webview.options = {
             enableScripts: true
         };
-        const config = vscode.workspace.getConfiguration("tiddlywiki-integration");
         const rootPath = vscode.workspace.rootPath;
         if (rootPath) {
+            const config = vscode.workspace.getConfiguration("tiddlywiki-integration");
             let wikiPath: string | undefined = config.get("path");
             if (wikiPath) {
                 wikiPath = path.join(rootPath, wikiPath);
                 if (!fs.existsSync(wikiPath as string)) {
-                    console.log("Does not exist");
+                    const emptyPath = path.join(this.context.extensionPath, "resources", "empty.html");
+                    fs.copyFileSync(emptyPath, wikiPath);
                 }
                 this.view.webview.html = fs.readFileSync(wikiPath).toString();
             } else {
