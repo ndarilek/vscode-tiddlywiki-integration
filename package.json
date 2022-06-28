@@ -10,7 +10,7 @@
         "Other"
     ],
     "activationEvents": [
-        "onStartupFinished"
+        "onView:tiddlyWikiView"
     ],
     "main": "./out/extension.js",
     "contributes": {
