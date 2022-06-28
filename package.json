@@ -2,6 +2,7 @@
     "name": "tiddlywiki-integration",
     "displayName": "TiddlyWiki Integration",
     "description": "Run TiddlyWiki in VS Code",
+    "repository": "https://github.com/ndarilek/vscode-tiddlywiki-integration",
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.68.0"
