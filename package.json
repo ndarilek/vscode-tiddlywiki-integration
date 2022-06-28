@@ -44,7 +44,14 @@
                     "icon": "icons/tiddlywiki.svg"
                 }
             ]
-        }
+        },
+        "keybindings": [
+            {
+                "command": "tiddlyWikiView.focus",
+                "key": "Ctrl+Alt+W",
+                "mac": "Cmd+Alt+W"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
