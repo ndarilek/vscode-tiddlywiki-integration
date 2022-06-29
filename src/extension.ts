@@ -5,7 +5,7 @@ import * as vscode from "vscode";
 export function activate(context: vscode.ExtensionContext) {
     const provider = new Provider(context);
     context.subscriptions.push(
-        vscode.window.registerWebviewViewProvider("tiddlyWikiView", provider));
+        vscode.window.registerWebviewViewProvider("tiddlyWikiView", provider, null, true));
 }
 
 class Provider implements vscode.WebviewViewProvider {
