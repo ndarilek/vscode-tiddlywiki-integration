@@ -1,0 +1,48 @@
+title: $:/ndarilek/vscode-integration/saver.js
+type: application/javascript
+module-type: saver
+
+(function () {
+
+    "use strict";
+
+    var vscode = null;
+    try {
+        if (!!acquireVsCodeApi) {
+            vscode = acquireVsCodeApi();
+        }
+    } catch (err) {}
+
+    var VscodeSaver = function () {
+    };
+
+    VscodeSaver.prototype.save = function (text, method, callback) {
+        vscode.postMessage({ command: "save", text });
+        // Errors are surfaced in VS Code.
+        callback(null);
+        return true;
+    };
+
+    /*
+    Information about this saver
+    */
+    VscodeSaver.prototype.info = {
+        name: "vscode",
+        priority: 4000,
+        capabilities: ["save", "autosave"]
+    };
+
+    /*
+    Static method that returns true if this saver is capable of working
+    */
+    exports.canSave = function (wiki) {
+        return !!vscode;
+    };
+
+    /*
+    Create an instance of this saver
+    */
+    exports.create = function (wiki) {
+        return new VscodeSaver();
+    };
+})();

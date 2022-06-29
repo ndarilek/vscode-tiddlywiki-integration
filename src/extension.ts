@@ -30,6 +30,19 @@ class Provider implements vscode.WebviewViewProvider {
                     fs.copyFileSync(emptyPath, wikiPath);
                 }
                 this.view.webview.html = fs.readFileSync(wikiPath).toString();
+                this.view.webview.onDidReceiveMessage(message => {
+                    switch (message.command) {
+                        case "save":
+                            try {
+                                if (wikiPath) {
+                                    fs.writeFileSync(wikiPath, message.text);
+                                }
+                            } catch (err) {
+                                vscode.window.showErrorMessage(`Failed to save: ${err}`);
+                            }
+                            return;
+                    }
+                });
             } else {
                 vscode.window.showErrorMessage("Please configure a wiki path relative to the workspace root.");
             }
