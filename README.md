@@ -21,6 +21,10 @@ This extension contributes the following settings:
 
 * `tiddlywiki-integration.path`: path relative to workspace root where wiki is located
 
+## Known Issues
+
+* This isn't published to the VS Code Marketplace for now. Coming soon.
+
 ## Release Notes
 
 ### 0.0.1
