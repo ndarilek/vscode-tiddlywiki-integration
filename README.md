@@ -27,6 +27,10 @@ This extension contributes the following settings:
 
 ## Release Notes
 
+### 0.0.3+5.1.22
+
+* Move view out of the activity bar to (hopefully) use more space by default.
+
 ### 0.0.2+5.1.22
 
 * Persist WebView to preserve content when hidden.
